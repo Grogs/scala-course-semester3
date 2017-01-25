@@ -1,5 +1,5 @@
 Welcome to Fullstack Scala
-===
+==========================
 This is the a blank Play project which we will build on.
 
 
