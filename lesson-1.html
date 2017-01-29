@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+			.reveal .footer {
+			  position: absolute;
+			  bottom: 1em;
+			  left: 1em;
+			  font-size: 0.7em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class='footer'>
+				<a href="https://grogs.github.io/scala-course">grogs.github.io/scala-course</a>
+			</div>
+			<div class="slides">
+				<section data-markdown data-separator="^~~~~" data-separator-vertical="^~" data-notes="^Note:">
+					<script type="text/template">
+					## Introductions
+					* What's your name? 
+					* Where do you work?  
+					* What are your experiences with the following?: 
+					  - Scala
+					  - backend web development
+					  - frontend web development  
+					* What are you looking to get from the course?
+
+					~~~~
+
+					## Course Plan
+					* Learn to build web apps with Scala.
+					* Play Framework for backend
+					* Scala.js on the frontend
+					* You should be able to go away and build your own rich web applications
+
+					~
+
+					Today let's just focus on Scala itself
+
+					~~~~
+
+					Starting with some history for context
+					~
+					### Java and Odersky
+					~
+					- __1996__ Java 1.0 released
+					~
+					- __1997__ Pizza released by Martin Odersky and Philip Wadler
+					  * Superset of Java. Compiled down to Java code. 
+					  * Contained _polymorphism (AKA generics)_, _algebraic types_ (AKA case classes), _high order functions_
+					~
+					- __1998__ GJ released by Odersky, Wadler et al. 
+					  * Compiled to JVM bytecode. 
+					  * Kept generics (using type erasure), dropped algebraic types and higher order functions
+					~
+					- __2000__ Sun Microsystems adopts GJ as `javac` in JDK 1.3
+					  * With generics removed
+					~
+					* __2004__ Java 1.5 released, with generics from GJ
+					
+					~
+					### Functional Programming
+					~
+					* __Lambda calculus__ developed in 1930s  
+
+					* __Lisp__ developed in 1950s  
+
+					* __ML__ developed in 1970s  
+
+					* __Haskell__ developed 1987 onwards  
+					culminating in the 1998 standard
+
+					* Odersky develops __Funnel__ 199-2001
+					  - compiled to JVM bytecode
+					  0 blended OO and FP
+					~
+					### Scala  
+					~
+					* __2004__ _Scala_ publically released
+					  * Blends OO and FP
+					  * Includes case classes and higher order functions from Pizza
+					  * Written in Java  
+
+					* 2.x first released in __2006__, wirtten in Scala.
+					* Current version is 2.12  
+					
+					* 3.x (AKA Dotty) is in progress. 
+
+					~~~~
+					Now let's look at some Scala code
+					~
+					It looks quite like Java
+
+					```
+					object Main {
+						def main(args: Array[String]): Unit = {
+							println("Hello world!")
+						}
+					}
+					``` 
+
+					Note:
+					* No semicolons
+					* No `public` access modifier
+					* Methods/functions definition starts with `def`
+					* No explicit return statement
+					* Types are written after identifiers
+					* 'Unit' type. 
+					* We could omit `:Unit` and rely on type inference
+					* We can omit the braces around the method definition
+					* Like variable assignment, methods declaration has `=`
+					</script>					
+				</section>
+<!-- 				<section>
+					<h1>Code</h1>
+					<p>We won't write any code today. Instead we'll look at the code we already have.</p>
+					<p>Run your copy of the example 'play-scala' project</p>
+					<ul>
+						<li>cd play-scala</li>
+						<li>sbt run</li>
+						<li>open http://localhost:9000</li>
+					</ul>
+				</section>
+ -->			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
