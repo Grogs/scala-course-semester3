@@ -16,3 +16,6 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.1")
 addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.1.0")
 
 addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
+
+
+libraryDependencies += "org.jsoup" % "jsoup" % "1.9.2" % Compile
