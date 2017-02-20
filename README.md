@@ -9,5 +9,3 @@ Tasks
 * Run `sbt test` and you should see 10 test failures
 * Fix the tests in `GeographyServiceTest` and `HotelFinderServiceTest`
 * Let us know once you've done this.
-* Continue by fixing `HotelsServiceTest`
-* Let us know if you finish.
