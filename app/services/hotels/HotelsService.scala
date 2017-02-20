@@ -10,6 +10,7 @@ class HotelsService @Inject() (
                                 hotelFinderService: HotelFinderService) {
 
   def search(destination: String, radius: Double): Seq[Hotel] = {
+    //Call each of the injected services to implement this.
     ???
   }
 
