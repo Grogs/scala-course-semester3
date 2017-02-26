@@ -7,7 +7,7 @@ Let's start by looking at how they can be implemented.
 
 This week we want to compose those two services and build a page to search for hotels"
 * Fix the tests in `HotelsServiceTest` by implementing HotelsService
-* Now build a page to show search results by fixing the tests in `HotelsControllerSpec`
+* Now build a page to show search results by fixing the tests in `HotelsControllerSpec`. I have included some clues in the test failure messages.
     * Hints:
         * We have a `HotelsController` with the `HotelsService` injected. You can add an endpoint here.
         * You will need to add a route in the `routes` file.

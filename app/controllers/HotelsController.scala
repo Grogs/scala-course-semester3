@@ -12,16 +12,8 @@ class HotelsController @Inject()(hotelsService: HotelsService) extends Controlle
 
     val distance = radius.toDouble
 
-    if (distance > 0) {
-      Ok(
-        views.html.searchResults(
-          destination, radius,
-          hotelsService.search(destination, distance)
-        )
-      )
-    } else {
-      BadRequest("Invalid distance")
-    }
+    //Create a new view and call it with the search results, which you can get from HotelsService
+    InternalServerError
   }
 
 }
