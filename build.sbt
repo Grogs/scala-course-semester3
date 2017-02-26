@@ -13,8 +13,8 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.5.0",
   "org.webjars" % "bootstrap" % "3.3.5",
-  "org.webjars" % "animate.css" % "3.5.2"
-
+  "org.webjars" % "animate.css" % "3.5.2",
+  "org.jsoup" % "jsoup" % "1.10.2" % Test
 )
 
 

@@ -1,0 +1,15 @@
+@(destination: String, radius: String, searchResults: Seq[model.Hotel])
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hotels within @radius kilometers of @destination</title>
+    </head>
+    <body>
+        @for(hotel <- searchResults) {
+            <div>
+                @hotel.name
+            </div>
+        }
+    </body>
+</html>

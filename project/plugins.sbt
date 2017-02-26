@@ -1,3 +1,5 @@
+resolvers += "JBoss" at "https://repository.jboss.org/"
+
 // The Play plugin
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.10")
 

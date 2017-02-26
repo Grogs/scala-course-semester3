@@ -9,9 +9,10 @@ class HotelsService @Inject() (
                                 geographyService: GeographyService,
                                 hotelFinderService: HotelFinderService) {
 
-  def search(destination: String, radius: Double): Seq[Hotel] = {
-    //Call each of the injected services to implement this.
-    ???
-  }
+  def search(destination: String, radius: Double): Seq[Hotel] = for {
+    coordinates <- geographyService.lookupDestination(destination).toSeq
+    hotelId <- hotelFinderService.findHotels(coordinates, radius)
+    hotel <- catalogueService.lookupHotel(hotelId)
+  } yield hotel
 
 }
