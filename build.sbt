@@ -20,8 +20,32 @@ lazy val server = project.enablePlugins(PlayScala).settings(
         "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
         "org.jsoup" % "jsoup" % "1.10.2" % Test
     )
-)
+).dependsOn(sharedJvm)
 
+lazy val shared = crossProject.crossType(CrossType.Pure).settings(
+    name := "play-scala-shared",
+    commonSettings,
+    libraryDependencies ++= Seq(
+        "com.lihaoyi" %%% "upickle" % "0.3.6",
+        "com.lihaoyi" %%% "autowire" % "0.2.4",
+        "com.lihaoyi" %%% "scalatags" % "0.5.2"
+    )
+).jsConfigure(_ enablePlugins ScalaJSWeb)
+lazy val sharedJvm = shared.jvm
+lazy val sharedJs = shared.js
+
+
+lazy val client = project.enablePlugins(ScalaJSPlugin, ScalaJSWeb).settings(
+    commonSettings,
+    persistLauncher := true,
+    persistLauncher in Test := false,
+    libraryDependencies ++= Seq(
+        "org.scala-js" %%% "scalajs-dom" % "0.9.1",
+        "com.lihaoyi" %%% "autowire" % "0.2.4",
+        "com.lihaoyi" %%% "upickle" % "0.3.6",
+        "com.lihaoyi" %%% "scalatags" % "0.5.2"
+    )
+).dependsOn(sharedJs)
 
 
 lazy val populateCatalogueCache = taskKey[Unit]("Populate conf/example-hotels with some PCS properties")
