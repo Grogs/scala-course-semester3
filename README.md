@@ -1,21 +1,10 @@
-#Lesson 4
+#Lesson 5
 
-Start by checking out the `lesson4`branch
+Start by checking out the `lesson5`branch
 
-Last week you implemented `GeographyService` and `HotelFinderService`.  
-Let's start by looking at how they can be implemented.
+Last week you implemented the HotelsController and added an endpoint to search for hotels.  
 
-This week we want to compose those two services and build a page to search for hotels"
-* Fix the tests in `HotelsServiceTest` by implementing HotelsService
-* Now build a page to show search results by fixing the tests in `HotelsControllerSpec`. I have included some clues in the test failure messages.
-    * Hints:
-        * We have a `HotelsController` with the `HotelsService` injected. You can add an endpoint here.
-        * You will need to add a route in the `routes` file.
-            * You can see an example of extracting a path parameter there:  
-              `GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)`  
-              If we called `/assets/picture.png`, then `picture.png` would be passed into the `file` parameter
-            * You will also need to extract a query parameter. Here's an example:  
-              Given the route `GET   /comments                     controllers.Application.comments(page: Int)`  
-              If we called `/comments?page=1`, then `1` would be passed into the  `page` parameter
-            * For more info, see docs: https://www.playframework.com/documentation/2.5.x/ScalaRouting
-        * You will need to add a template in the `views` package.
+This week we flesh out that search results page.
+* Fix the tests in `HotelsControllerSpec` by looking at the clues included
+* You can check your progress at [http://localhost:9000/hotels/search?destination=London&distance=1.2](http://localhost:9000/hotels/search?destination=London&distance=1.2)
+* You'll need to edit the `searchResults.scala.html` view
