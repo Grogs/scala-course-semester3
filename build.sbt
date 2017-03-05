@@ -21,7 +21,8 @@ lazy val server = project.enablePlugins(PlayScala).settings(
         "org.jsoup" % "jsoup" % "1.10.2" % Test
     ),
     scalaJSProjects := Seq(client),
-    pipelineStages in Assets := Seq(scalaJSPipeline)
+    pipelineStages in Assets := Seq(scalaJSPipeline),
+    compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value
 ).dependsOn(sharedJvm)
 
 lazy val shared = crossProject.crossType(CrossType.Pure).settings(
