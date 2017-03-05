@@ -19,7 +19,9 @@ lazy val server = project.enablePlugins(PlayScala).settings(
         "org.webjars" % "animate.css" % "3.5.2",
         "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
         "org.jsoup" % "jsoup" % "1.10.2" % Test
-    )
+    ),
+    scalaJSProjects := Seq(client),
+    pipelineStages in Assets := Seq(scalaJSPipeline)
 ).dependsOn(sharedJvm)
 
 lazy val shared = crossProject.crossType(CrossType.Pure).settings(
@@ -37,7 +39,8 @@ lazy val sharedJs = shared.js
 
 lazy val client = project.enablePlugins(ScalaJSPlugin, ScalaJSWeb).settings(
     commonSettings,
-    persistLauncher := true,
+    mainClass in Compile := Some("fss.App"),
+      persistLauncher := true,
     persistLauncher in Test := false,
     libraryDependencies ++= Seq(
         "org.scala-js" %%% "scalajs-dom" % "0.9.1",
