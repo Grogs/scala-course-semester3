@@ -58,6 +58,10 @@
 
           ### Lesson 1
 
+          ~
+          Install IntelliJ
+
+          https://www.jetbrains.com/idea/
           ~~~~
 
           ## Introductions
@@ -75,8 +79,9 @@
 
           ~
 
-          Today let's start by going over Scala itself
+          Today let's start with an introduction to Scala itself
 
+          ~
           Starting with some history of where it came from
 
           ~
@@ -122,31 +127,71 @@
           ~
           ### Functional Programming
           ~
-          * __Lambda calculus__ developed in 1930s  
+          __Lambda calculus__ developed in 1930s  
+          Note:
+          in the US by Alonzo Church
 
-          * __Lisp__ developed in 1950s  
+          ~
+          __Lisp__ developed in 1950s  
+          Note:
+          by John McCarthy whilst he was at MIT
+          ~
+          __ML__ developed in 1970s  
+          Note:
+          at Edinburgh University
+          ~
+          __Haskell__ version 1.0 was released in 1990
+          Note:
+          * Design by commitee - but went pretty well. 
+          * GHC, the dominant implementation, was initially developed at the University of Glasgow.
+          * The two lead developers now work for Microsoft Research, still working on the language.
 
-          * __ML__ developed in 1970s  
-
-          * __Haskell__ developed 1987 onwards  
-          culminating in the 1998 standard
-
-          * Odersky develops __Funnel__ 199-2001
+          ~
+          Odersky develops __Funnel__ 1999-2001
             - compiled to JVM bytecode
-            0 blended OO and FP
+            - blended OO and FP
+          
+          Note:
+          * After working on Pizza and GJ
+          * Precursor to Scala.
           ~
           ### Scala  
           ~
-          * __2004__ _Scala_ publically released
-            * Blends OO and FP
-            * Includes case classes and higher order functions from Pizza
+          __2004__ _Scala_ publically released
+            * Blended OO and FP
             * Written in Java  
+            * Included features from Pizza
+          Note:
+          features like case classes and higher order functions
+          ~
+          Current 2.x versions first released in __2006__  
 
-          * 2.x first released in __2006__, written in Scala.
-          * Current version is 2.12  
+          It was bootstrapped (written in Scala)  
 
-          * Dotty, which will become 3.0, is in progress. 
+          Now we're up to 2.12  
+          Note:
+          This is the current version of Scala.
+          ~
 
+          * Dotty AKA 3.0, is in progress. 
+          Note:
+          * Simplifies the theory underlying the language
+          * Should give us faster compilation, and much cleaner compiler codebase to evolve
+
+          ~~~~
+          ### Getting started with Play and Scala.js
+          ~
+          Setting up the starter project
+          ~
+          Checkout the project this git:  
+
+          https://github.com/grogs/scala-course
+
+          Note:
+          * Switch to terminal and show them
+          * git checkout
+          * sbt run
+          * browse to localhost:9000
           ~~~~
           Now let's look at some Scala code
           ~
