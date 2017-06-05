@@ -1,7 +1,7 @@
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
 
-scalaVersion in ThisBuild := "2.11.11   "
+scalaVersion in ThisBuild := "2.11.8"
 
 lazy val commonSettings = Seq(
     version := "1.0-SNAPSHOT",
@@ -47,7 +47,6 @@ lazy val client = project.enablePlugins(ScalaJSPlugin, ScalaJSWeb).settings(
     persistLauncher := true,
     persistLauncher in Test := false,
     libraryDependencies ++= Seq(
-        //"org.scalatest" %%% "scalatest" % "3.0.0-M10" % "test",
         "org.scala-js" %%% "scalajs-dom" % "0.9.1",
         "com.lihaoyi" %%% "autowire" % "0.2.4",
         "com.lihaoyi" %%% "upickle" % "0.3.6",
