@@ -5,6 +5,13 @@ import org.scalatest.{FunSuite, Matchers}
 
 class GeographyServiceTest extends FunSuite with Matchers {
 
+
+  val m = Map(
+    "greg" -> 1,
+    "alex" -> 9999
+  )
+
+
   val service = new GeographyService
 
   test("unsupported location") {
