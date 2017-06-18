@@ -15,6 +15,8 @@ import services.Counter
 @Singleton
 class CountController @Inject() (counter: Counter) extends Controller {
 
+
+
   /**
    * Create an action that responds with the [[Counter]]'s current
    * count. The result is plain text. This `Action` is mapped to
