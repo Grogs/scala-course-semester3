@@ -1,0 +1,22 @@
+@(destination: String, radius: String, searchResults: Seq[model.Hotel])(webJarAssets: WebJarAssets)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hotels within @radius kilometers of @destination</title>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(webJarAssets.locate("css/bootstrap.css"))'>
+        <script src="@routes.WebJarAssets.at(webJarAssets.locate("jquery.js"))" type="text/javascript"></script>
+        <script src="@routes.WebJarAssets.at(webJarAssets.locate("js/bootstrap.js"))" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="container">
+            @for(hotel <- searchResults) {
+            <div>
+                @hotel.name
+            </div>
+        }
+        </div>
+
+        @scalajs.html.scripts("client", routes.Assets.versioned(_).toString, name => getClass.getResource(s"/public/$name") != null)
+    </body>
+</html>
