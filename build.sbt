@@ -30,7 +30,7 @@ lazy val server = project.enablePlugins(PlayScala).settings(
 ).dependsOn(sharedJvm)
 
 lazy val shared = crossProject.crossType(CrossType.Pure).settings(
-    name := "play-scala-shared",
+    name := "shared",
     commonSettings,
     libraryDependencies ++= Seq(
         "com.lihaoyi" %%% "upickle" % "0.4.4",
@@ -42,7 +42,7 @@ lazy val shared = crossProject.crossType(CrossType.Pure).settings(
   .enablePlugins(SbtTwirl)
   .settings(
       sourceDirectories in (Compile, TwirlKeys.compileTemplates) +=
-        (baseDirectory.value.getParentFile / "src" / "main" / "twirl")
+        (baseDirectory.value.getParentFile / "src" / "main" / "scala")
   )
 
 lazy val sharedJvm = shared.jvm

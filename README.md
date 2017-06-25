@@ -1,15 +1,24 @@
-# Lesson 5
+#Lesson 6
 
-Last week you implemented the HotelsController and added an endpoint to search for hotels.  
+Start by checking out the `lesson6`branch and running `sbt compile`.
+ 
+[//]: # (Review solutions to lesson 5. Look at the code moved to shared.)
 
-This week we flesh out that search results page:
-* Check out the `lesson5` branch 
-* Fix the tests in `HotelsControllerSpec` by looking at the clues included
-    * You can check your progress by running `./sbt run` and then browsing to:
-        * http://localhost:9000/hotels/search?destination=london&distance=1.2
-    * You can run the tests on any file change by running this in the terminal:
-        * `./sbt "~testOnly *.HotelsControllerSpec"`
-    * You'll need to edit the `searchResults.scala.html` view
-        * Docs for Play's templates: https://www.playframework.com/documentation/2.5.x/ScalaTemplates
 
-Once you finish, it should look like this: https://scala-course.herokuapp.com/hotels/search?destination=london&distance=1.2
+###Exercise 1 - Interactive Search
+1. Add event handlers to the destination and distance inputs.
+    * add logging to verify...
+2. Make them call the reload function with the new destination and distance
+    * add logging to verify...
+2. Implement to the render function, it should
+    * Fetch the new search results using the Autowire `Client`
+        * Use `Client[HotelsService]` to call methods on the HotelsService we implemented a few weeks ago. 
+        * Autowire documentation: https://github.com/lihaoyi/autowire#minimal-example
+    * Generate the new table HTML using the shared Twirl template.
+    * Replace the previous table with the new table.
+4. Remove the Search button, it's not needed anymore.
+
+###Step 2 - Autocompletion of destinations
+Take a look at `fss.Autocomplete` and hook it up to the destination input
+* You'll need to edit the `apply` method in `views.HotelListingTable`
+    * ScalaTags documentation: http://www.lihaoyi.com/scalatags/

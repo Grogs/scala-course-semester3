@@ -1,11 +1,6 @@
 @import model.Hotel
 @(destination: String, radius: String, searchResults: Seq[Hotel])(webJarAssets: WebJarAssets)
 
-@gmapsLink(hotel: Hotel) = {
-    import hotel._, coordinates._
-    s"http://maps.google.com/?q=$name near $lat,$long"
-}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,24 +11,28 @@
     </head>
     <body>
         <div id="container">
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Images</th>
-                </tr>
-                @for(hotel <- searchResults) {
-                    <tr>
-                        <td>@hotel.name</td>
-                        <td><a href="@gmapsLink(hotel)">Map</a></td>
-                        <td>
-                        @for(image <- hotel.images) {
-                            <img height="200px" src="@image" />
-                        }
-                        </td>
-                    </tr>
-                }
-            </table>
+
+            <p>
+                <form class="form-inline" method="get">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" name="destination" id="destination" placeholder="e.g. London" value="@destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="distance">Distance</label>
+                        <input type="number" min="0.5" max="20" step="0.5" class="form-control" name="distance" id="distance" value="@{
+                            radius
+                        }">
+                    </div>
+                    <button id="load-hotels" type="submit" class="btn btn-default">Search</button>
+                </form>
+            </p>
+
+
+            <p>
+                @hotelsTable(searchResults)
+            </p>
+
         </div>
 
         @scalajs.html.scripts("client", routes.Assets.versioned(_).toString, name => getClass.getResource(s"/public/$name") != null)
