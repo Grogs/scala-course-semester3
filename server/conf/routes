@@ -14,4 +14,9 @@ GET     /message                    controllers.AsyncController.message
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
 
+# The search results page
 GET     /hotels/search              controllers.HotelsController.search(destination: String, distance: String)
+
+# API endpoint for autowire
+GET     /hotels/api/*path           controllers.HotelsController.api(path: String)
+POST    /hotels/api/*path           controllers.HotelsController.api(path: String)
