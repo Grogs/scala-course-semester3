@@ -22,3 +22,9 @@ Start by checking out the `lesson6`branch and running `sbt compile`.
 Take a look at `fss.Autocomplete` and hook it up to the destination input
 * You'll need to edit the `apply` method in `views.HotelListingTable`
     * ScalaTags documentation: http://www.lihaoyi.com/scalatags/
+    
+### Extension
+* Only update search results for valid destinations.  
+    * At the moment, if you type in Paris, you get intermediate empty search results until you finish typing.  
+    * Instead, don't update the results if it's empty.  
+      Alternatively, show a message saying nothing matches their criteria.
