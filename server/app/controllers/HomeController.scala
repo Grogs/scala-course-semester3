@@ -12,7 +12,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()  (ws: WSClient) extends Controller {
+class HomeController @Inject()  (ws: WSClient) extends InjectedController {
 
   /**
    * Create an Action to render an HTML page with a welcome message.
@@ -23,7 +23,7 @@ class HomeController @Inject()  (ws: WSClient) extends Controller {
   def index = Action.async {
     ws
       .url("http://ifconfig.me")
-      .withHeaders(USER_AGENT -> "curl")
+      .withHttpHeaders(USER_AGENT -> "curl")
       .get()
       .map( resp =>
         Ok(resp.body)

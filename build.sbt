@@ -1,11 +1,11 @@
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
 
-scalaVersion in ThisBuild := "2.11.8"
+scalaVersion in ThisBuild := "2.12.2"
 
 lazy val commonSettings = Seq(
     version := "1.0-SNAPSHOT",
-    scalaVersion := "2.11.8"
+    scalaVersion := "2.12.2"
 )
 
 lazy val server = project.enablePlugins(PlayScala).settings(
@@ -15,11 +15,13 @@ lazy val server = project.enablePlugins(PlayScala).settings(
         jdbc,
         cache,
         ws,
-        "com.vmunier" %% "scalajs-scripts" % "1.0.0",
-        "org.webjars" %% "webjars-play" % "2.5.0",
+        guice,
+        "com.typesafe.play" %% "play-json" % "2.6.0",
+        "com.vmunier" %% "scalajs-scripts" % "1.1.0",
+        "org.webjars" %% "webjars-play" % "2.6.0-M1",
         "org.webjars" % "bootstrap" % "3.3.7",
         "org.webjars" % "animate.css" % "3.5.2",
-        "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
+        "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % Test,
         "org.jsoup" % "jsoup" % "1.10.2" % Test
     ),
     scalaJSProjects := Seq(client),
@@ -31,11 +33,18 @@ lazy val shared = crossProject.crossType(CrossType.Pure).settings(
     name := "play-scala-shared",
     commonSettings,
     libraryDependencies ++= Seq(
-        "com.lihaoyi" %%% "upickle" % "0.3.6",
+        "com.lihaoyi" %%% "upickle" % "0.4.4",
         "com.lihaoyi" %%% "autowire" % "0.2.6",
-        "com.lihaoyi" %%% "scalatags" % "0.6.3"
+        "com.lihaoyi" %%% "scalatags" % "0.6.3",
+        "com.typesafe.play" %% "play-json" % "2.6.0"
     )
 ).jsConfigure(_ enablePlugins ScalaJSWeb)
+  .enablePlugins(SbtTwirl)
+  .settings(
+      sourceDirectories in (Compile, TwirlKeys.compileTemplates) +=
+        (baseDirectory.value.getParentFile / "src" / "main" / "twirl")
+  )
+
 lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
 
@@ -44,14 +53,13 @@ lazy val client = project.enablePlugins(ScalaJSPlugin, ScalaJSWeb).settings(
     commonSettings,
     mainClass in Compile := Some("App"),
     emitSourceMaps in fullOptJS := true,
-    persistLauncher := true,
-    persistLauncher in Test := false,
     libraryDependencies ++= Seq(
         "org.scala-js" %%% "scalajs-dom" % "0.9.1",
-        "com.lihaoyi" %%% "autowire" % "0.2.4",
-        "com.lihaoyi" %%% "upickle" % "0.3.6",
-        "com.lihaoyi" %%% "scalatags" % "0.5.2",
-        "be.doeraene" %%% "scalajs-jquery" % "0.9.1"
+        "com.lihaoyi" %%% "autowire" % "0.2.6",
+        "com.lihaoyi" %%% "upickle" % "0.4.4",
+        "com.lihaoyi" %%% "scalatags" % "0.6.3",
+        "be.doeraene" %%% "scalajs-jquery" % "0.9.1",
+        "com.typesafe.play" %% "play-json" % "2.6.0"
     )
 ).dependsOn(sharedJs)
 

@@ -1,4 +1,10 @@
-@(destination: String, radius: String, searchResults: Seq[model.Hotel])(webJarAssets: WebJarAssets)
+@import model.Hotel
+@(destination: String, radius: String, searchResults: Seq[Hotel])(webJarAssets: WebJarAssets)
+
+@gmapsLink(hotel: Hotel) = {
+    import hotel._, coordinates._
+    s"http://maps.google.com/?q=$name near $lat,$long"
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,11 +16,24 @@
     </head>
     <body>
         <div id="container">
-            @for(hotel <- searchResults) {
-            <div>
-                @hotel.name
-            </div>
-        }
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Images</th>
+                </tr>
+                @for(hotel <- searchResults) {
+                    <tr>
+                        <td>@hotel.name</td>
+                        <td><a href="@gmapsLink(hotel)">Map</a></td>
+                        <td>
+                        @for(image <- hotel.images) {
+                            <img height="200px" src="@image" />
+                        }
+                        </td>
+                    </tr>
+                }
+            </table>
         </div>
 
         @scalajs.html.scripts("client", routes.Assets.versioned(_).toString, name => getClass.getResource(s"/public/$name") != null)
