@@ -1,11 +1,11 @@
-#Lesson 6
+# Lesson 6
 
 Start by checking out the `lesson6`branch and running `sbt compile`.
  
 [//]: # (Review solutions to lesson 5. Look at the code moved to shared.)
 
 
-###Exercise 1 - Interactive Search
+### Exercise 1 - Interactive Search
 1. Add event handlers to the destination and distance inputs.
     * add logging to verify...
 2. Make them call the reload function with the new destination and distance
@@ -18,7 +18,7 @@ Start by checking out the `lesson6`branch and running `sbt compile`.
     * Replace the previous table with the new table.
 4. Remove the Search button, it's not needed anymore.
 
-###Step 2 - Autocompletion of destinations
+### Step 2 - Autocompletion of destinations
 Take a look at `fss.Autocomplete` and hook it up to the destination input
 * You'll need to edit the `apply` method in `views.HotelListingTable`
     * ScalaTags documentation: http://www.lihaoyi.com/scalatags/
