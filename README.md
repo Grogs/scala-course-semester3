@@ -1,28 +1,29 @@
-#Lesson 7
+# Lesson 7
 
 Start by checking out the `lesson7`branch
 
 This week we want to allow the user to display the search results on a map.
+  
+----  
 
-Demo: https://limitless-lowlands-73789.herokuapp.com/hotels/search?destination=london&distance=1.5
-
-##Step 1 Add button to create modal for the map
-Start by adding a button which launches a bootstrap modal to contain the map.  
-
-You can do this by fixing the tests in `services.hotels.Lesson7`.  
-
-Please refer to the Bootstrap docs for modals: http://getbootstrap.com/javascript/#modals
-
-##Step 2 Display a map in the modal
-Next, you need to add a Google Map.
-
-We can use access the JavaScript Google Maps in `App` in the client.
- 
 Steps:
-* Add an event listener to the modal button
-     http://getbootstrap.com/javascript/#modals-events
-* In the event listener, call the backend to get the new set of hotels (as we introduced last week)
-* Take the new hotels and draw them on a Google Map.
-    * Start by adding a marker for each hotel.
-    https://developers.google.com/maps/documentation/javascript/examples/marker-simple
-    * Then add an info window to show the hotel's name and description.
+
+
+1. Add a button to open a bootstrap modal, where we'll display the map. 
+    * Documentation: http://getbootstrap.com/javascript/#modals
+    * Fix the failing test in `services.hotels.Lesson7`.  
+
+2. Add an empty Map inside the modal.
+    * Put the map related code in `Client.onMapOpen' which runs every time the user opens the Map.
+    * See https://developers.google.com/maps/documentation/javascript/examples/map-simple
+
+3. Add a Marker for each Hotel. 
+    * See https://developers.google.com/maps/documentation/javascript/examples/marker-simple
+    * You'll have to call the backend for the hotels again, in the same way we did last week using the Autowire Client.
+
+4. Update the Map's LatLngBounds, so the Map focuses on the right area. 
+    * See https://coderwall.com/p/hojgtq/auto-center-and-auto-zoom-a-google-map
+
+5. Add InfoWindows to display a Hotel's description when a marker is clicked on. 
+    * See https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
+ 
