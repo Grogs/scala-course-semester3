@@ -8,6 +8,7 @@
         <link rel='stylesheet' href='@routes.WebJarAssets.at(webJarAssets.locate("css/bootstrap.css"))'>
         <script src="@routes.WebJarAssets.at(webJarAssets.locate("jquery.js"))" type="text/javascript"></script>
         <script src="@routes.WebJarAssets.at(webJarAssets.locate("js/bootstrap.js"))" type="text/javascript"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
     </head>
     <body>
         <div id="container">
@@ -28,6 +29,30 @@
                 </form>
             </p>
 
+            <p>
+                <!--From http://getbootstrap.com/javascript/#modals -->
+                <!-- Button to trigger modal -->
+                <button type="button" id="show-map" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mapModal">
+                    Show hotels on a map
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <!-- Custom title -->
+                                <h4 class="modal-title" id="mapModalLabel"></h4>
+                            </div>
+                            <div class="modal-body">
+                                    <!-- This div is used in ClientMain.renderMap -->
+                                <div id="map" style="height: 500px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p>
 
             <p>
                 @hotelsTable(searchResults)

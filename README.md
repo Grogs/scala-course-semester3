@@ -1,30 +1,28 @@
-# Lesson 6
+#Lesson 7
 
-Start by checking out the `lesson6`branch and running `sbt compile`.
+Start by checking out the `lesson7`branch
+
+This week we want to allow the user to display the search results on a map.
+
+Demo: https://limitless-lowlands-73789.herokuapp.com/hotels/search?destination=london&distance=1.5
+
+##Step 1 Add button to create modal for the map
+Start by adding a button which launches a bootstrap modal to contain the map.  
+
+You can do this by fixing the tests in `services.hotels.Lesson7`.  
+
+Please refer to the Bootstrap docs for modals: http://getbootstrap.com/javascript/#modals
+
+##Step 2 Display a map in the modal
+Next, you need to add a Google Map.
+
+We can use access the JavaScript Google Maps in `App` in the client.
  
-[//]: # (Review solutions to lesson 5. Look at the code moved to shared.)
-
-
-### Exercise 1 - Interactive Search
-1. Add event handlers to the destination and distance inputs.
-    * add logging to verify...
-2. Make them call the reload function with the new destination and distance
-    * add logging to verify...
-2. Implement to the render function, it should
-    * Fetch the new search results using the Autowire `Client`
-        * Use `Client[HotelsService]` to call methods on the HotelsService we implemented a few weeks ago. 
-        * Autowire documentation: https://github.com/lihaoyi/autowire#minimal-example
-    * Generate the new table HTML using the shared Twirl template.
-    * Replace the previous table with the new table.
-4. Remove the Search button, it's not needed anymore.
-
-### Step 2 - Autocompletion of destinations
-Take a look at `fss.Autocomplete` and hook it up to the destination input
-* You'll need to edit the `apply` method in `views.HotelListingTable`
-    * ScalaTags documentation: http://www.lihaoyi.com/scalatags/
-    
-### Extension
-* Only update search results for valid destinations.  
-    * At the moment, if you type in Paris, you get intermediate empty search results until you finish typing.  
-    * Instead, don't update the results if it's empty.  
-      Alternatively, show a message saying nothing matches their criteria.
+Steps:
+* Add an event listener to the modal button
+     http://getbootstrap.com/javascript/#modals-events
+* In the event listener, call the backend to get the new set of hotels (as we introduced last week)
+* Take the new hotels and draw them on a Google Map.
+    * Start by adding a marker for each hotel.
+    https://developers.google.com/maps/documentation/javascript/examples/marker-simple
+    * Then add an info window to show the hotel's name and description.
