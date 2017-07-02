@@ -69,50 +69,6 @@ class App extends JSApp {
     )
 
     val gmap = new google.maps.Map(target, opts)
-
-    val point =
-      for {
-        hotel <- hotels
-        Coordinates(lat, long) = hotel.coordinates
-        latLng = new google.maps.LatLng(lat, long)
-      } yield {
-
-        val marker = new google.maps.Marker(google.maps.MarkerOptions(
-          position = latLng,
-          map = gmap,
-          title = hotel.name
-        ))
-
-        val infoWindow = new google.maps.InfoWindow(
-          InfoWindowOptions( content =
-            s"""
-              |<div>
-              |  <h2>${hotel.name}</h2>
-              |  <p>${hotel.descriptionHtml}</p>
-              |</div>
-            """.stripMargin
-          )
-        )
-
-        marker -> infoWindow
-      }
-
-    val markerBounds = new google.maps.LatLngBounds()
-    var activeInfoWindow = new google.maps.InfoWindow
-
-    for {
-      (marker, infoWindow) <- point
-    } yield {
-      marker.addListener("click", (_:js.Any) => {
-        activeInfoWindow.close()
-        activeInfoWindow = infoWindow
-        infoWindow.open(gmap, marker)
-      })
-      markerBounds.extend(marker.getPosition())
-    }
-
-    gmap.fitBounds(markerBounds)
-
   }
 
 
