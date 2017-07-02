@@ -38,16 +38,7 @@ class App extends JSApp {
     searchButton().style.display = "none"
 
     // From http://getbootstrap.com/javascript/#modals-events
-    jQuery("#mapModal").on("shown.bs.modal",
-      (_: JQueryEventObject) => {
-        val dest = destination().value
-        val dist = distance().value.toLong
-        Client[HotelsService].search(dest, dist).call().foreach { hotels =>
-          document.getElementById("mapModalLabel").innerHTML = s"Hotels within ${dist}km of $dest"
-          renderMap(document.getElementById("map"), hotels)
-        }
-      }
-    )
+    jQuery("#mapModal").on("shown.bs.modal", onMapOpen(_))
   }
 
   def handleChange(e: Event) = {
@@ -61,16 +52,13 @@ class App extends JSApp {
     } hotelsTables().outerHTML = table
   }
 
-  def renderMap(target: Element, hotels: Seq[Hotel]) = {
+  def onMapOpen(e: JQueryEventObject) = {
+    println("This runs when the user opens the map")
+    val dest = destination().value
+    val dist = distance().value.toLong
 
-    val opts = google.maps.MapOptions(
-      center = new google.maps.LatLng(50, 0),
-      zoom = 11
-    )
-
-    val gmap = new google.maps.Map(target, opts)
+    //Add map related code here
   }
-
 
 }
 
