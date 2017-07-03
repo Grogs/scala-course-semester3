@@ -6,6 +6,21 @@ This week we want to allow the user to display the search results on a map.
   
 ----  
 
+
+new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+        
+        will become
+        
+        
+new google.maps.Map(document.getElementById('map'), new MapOption(
+          center = new LatLng(lat = -34.397, lng = 150.644),
+          zoom = 8
+        ));
+
+----
 Steps:
 
 
