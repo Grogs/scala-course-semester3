@@ -1,0 +1,33 @@
+@(usersPerDestination: Map[String, Int])(webJarAssets: WebJarAssets)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Live users breakdown</title>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(webJarAssets.locate("css/bootstrap.css"))'>
+        <script src="@routes.WebJarAssets.at(webJarAssets.locate("jquery.js"))" type="text/javascript"></script>
+        <script src="@routes.WebJarAssets.at(webJarAssets.locate("js/bootstrap.js"))" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="container">
+
+            <p>
+                <table class="table">
+                    <tr>
+                        <th>Destination</th>
+                        <th>Users</th>
+                    </tr>
+                    @for((dest, count) <- usersPerDestination) {
+                        <tr>
+                            <td>@dest</td>
+                            <td>@count</td>
+                        </tr>
+                    }
+                </table>
+            </p>
+
+        </div>
+
+        @scalajs.html.scripts("client", routes.Assets.versioned(_).toString, name => getClass.getResource(s"/public/$name") != null)
+    </body>
+</html>

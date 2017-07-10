@@ -20,3 +20,7 @@ GET     /hotels/search              controllers.HotelsController.search(destinat
 # API endpoint for autowire
 GET     /hotels/api/*path           controllers.HotelsController.api(path: String)
 POST    /hotels/api/*path           controllers.HotelsController.api(path: String)
+
+# Track live users
+GET     /WebSocket/user             controllers.UserTrackingController.socket
+GET     /users/live                 controllers.UserTrackingController.track
