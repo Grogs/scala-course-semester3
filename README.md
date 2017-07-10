@@ -1,28 +1,6 @@
-#Lesson 7
+#Lesson 8
 
-Start by checking out the `lesson7`branch
-
-This week we want to allow the user to display the search results on a map.
-
-Demo: https://limitless-lowlands-73789.herokuapp.com/hotels/search?destination=london&distance=1.5
-
-##Step 1 Add button to create modal for the map
-Start by adding a button which launches a bootstrap modal to contain the map.  
-
-You can do this by fixing the tests in `services.hotels.Lesson7`.  
-
-Please refer to the Bootstrap docs for modals: http://getbootstrap.com/javascript/#modals
-
-##Step 2 Display a map in the modal
-Next, you need to add a Google Map.
-
-We can use access the JavaScript Google Maps in `App` in the client.
- 
-Steps:
-* Add an event listener to the modal button
-     http://getbootstrap.com/javascript/#modals-events
-* In the event listener, call the backend to get the new set of hotels (as we introduced last week)
-* Take the new hotels and draw them on a Google Map.
-    * Start by adding a marker for each hotel.
-    https://developers.google.com/maps/documentation/javascript/examples/marker-simple
-    * Then add an info window to show the hotel's name and description.
+This lesson is mostly a presentation and code walkthrough. But there's a few bugs you can fix:
+* Currently, users are only added if they change the search of the page.  
+  Instead, change the frontend (App.scala) to send the location on page load, and update when they users changes destination.
+* Users are not being removed when they leave/close the page. Take a look at the UserActor in UserTrackingController.scala
