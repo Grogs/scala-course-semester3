@@ -56,7 +56,7 @@ Historically we had AJAX polling to show live changes on a page
 
 Client just keeps "polling" the server to see if there are updates <!-- .element: class="fragment" -->
 ~
-"long polling"
+Then came along "long polling"
 
 ![Long Polling diagram](longpolling.jpg)  
 
@@ -65,8 +65,11 @@ Client makes request to server.  <!-- .element: class="fragment" -->
 Server holds the connection open until there is an event to "push" to the client.  <!-- .element: class="fragment" -->
 
 Then the client sends the next long-living request  <!-- .element: class="fragment" -->
+
+Note:
+* Are there any potential problems you can see with this?
 ~
-Then WebSockets (and Server Sent Events)
+Then came along WebSockets and Server Sent Events
 ~
 **Server sent events (SSE)** let you push events from the server single long-lived connection.  
   
